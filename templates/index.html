@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bet Analyst AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>⚽ BET ANALYST AI</h1>
+    <p>Today's Football Analysis Dashboard</p>
+</header>
+
+<main>
+
+    <section class="card">
+        <div class="row">
+            <h2>🔥 Today's Matches</h2>
+            <button onclick="loadMatches()">Refresh</button>
+        </div>
+
+        <div id="matches">
+            Press Refresh to load today's fixtures.
+        </div>
+    </section>
+
+
+    <section class="card">
+
+        <h2>🧮 Model Calculator</h2>
+
+        <p>
+            Enter estimated xG and available odds.
+        </p>
+
+        <div class="grid">
+
+            <input
+                id="hx"
+                type="number"
+                step=".01"
+                placeholder="Home xG"
+            >
+
+            <input
+                id="ax"
+                type="number"
+                step=".01"
+                placeholder="Away xG"
+            >
+
+        </div>
+
+
+        <div class="grid">
+
+            <input
+                id="oh"
+                type="number"
+                step=".01"
+                placeholder="Home odds"
+            >
+
+            <input
+                id="od"
+                type="number"
+                step=".01"
+                placeholder="Draw odds"
+            >
+
+            <input
+                id="oa"
+                type="number"
+                step=".01"
+                placeholder="Away odds"
+            >
+
+        </div>
+
+
+        <div class="grid">
+
+            <input
+                id="o25"
+                type="number"
+                step=".01"
+                placeholder="Over 2.5 odds"
+            >
+
+            <input
+                id="ob"
+                type="number"
+                step=".01"
+                placeholder="BTTS odds"
+            >
+
+        </div>
+
+
+        <button onclick="runModel()">
+            Analyze
+        </button>
+
+        <pre id="model"></pre>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>💵 Bankroll</h2>
+
+        <div class="grid">
+
+            <input
+                id="bank"
+                type="number"
+                placeholder="Bankroll TSh"
+            >
+
+            <input
+                id="pct"
+                type="number"
+                value="2"
+                placeholder="Stake %"
+            >
+
+        </div>
+
+        <button onclick="calcStake()">
+            Calculate Stake
+        </button>
+
+        <div id="stake"></div>
+
+    </section>
+
+
+    <p class="warning">
+
+        ⚠️ Predictions are estimates, not guaranteed wins.
+        Avoid chasing losses and use only money you can afford to lose.
+
+    </p>
+
+</main>
+
+<script src="/static/app.js"></script>
+
+</body>
+      </html>
