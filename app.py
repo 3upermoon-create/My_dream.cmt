@@ -33,6 +33,31 @@ def today():
 @app.route("/api/match/<int:fixture_id>")
 def match_analysis(fixture_id):
     try:
+        prediction_data = get_predictions(fixture_id)
+        odds_data = get_odds(fixture_id)
+
+        prediction = prediction_data.get("response", [])
+        odds = odds_data.get("response", [])
+
+        result = {
+            "success": True,
+            "fixture_id": fixture_id,
+            "prediction": prediction,
+            "odds": odds,
+            "analysis_status": "DATA_LOADED",
+            "message": "Match data successfully collected."
+        }
+
+        return jsonify(result)
+
+    except Exception as e:
+
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        }), 500
+def match_analysis(fixture_id):
+    try:
         pred=get_predictions(fixture_id).get("response",[])
         odds=get_odds(fixture_id).get("response",[])
         return jsonify({"success":True,"fixture_id":fixture_id,
