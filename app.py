@@ -56,15 +56,6 @@ def match_analysis(fixture_id):
             "success": False,
             "error": str(e)
         }), 500
-def match_analysis(fixture_id):
-    try:
-        pred=get_predictions(fixture_id).get("response",[])
-        odds=get_odds(fixture_id).get("response",[])
-        return jsonify({"success":True,"fixture_id":fixture_id,
-                        "api_prediction":pred,"odds":odds,
-                        "note":"API data is shown for analysis; final model will be expanded with verified form/statistics."})
-    except Exception as e:
-        return jsonify({"success":False,"error":str(e)}),500
 
 @app.route("/api/model",methods=["POST"])
 def model():
